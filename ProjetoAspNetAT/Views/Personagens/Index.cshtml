@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProjetoAspNetAT.Models.Personagens>
+
+@{
+    ViewData["Title"] = "Lista de Personagens";
+}
+
+<div style="display:flex">
+<h1>Lista de Personagens</h1>
+<img src="~/iconHQ01.png" height="50px" style="margin-left: 25px">
+</img> </div>
+
+<p>
+    <a asp-action="Create">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            
+            <td>
+
+
+
+
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:#f27d52; border-radius:10%; padding: 8px">Editar</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:#f27d52; border-radius:10%; padding: 8px">Detalhes</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:#f27d52; border-radius:10%; padding: 8px">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Footer
+{
+    <span>Esta é minha página de Personagens</span>
+}
